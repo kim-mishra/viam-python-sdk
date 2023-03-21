@@ -40,6 +40,7 @@ class ModuleService(ModuleServiceBase):
         await stream.send_message(ReconfigureResourceResponse())
 
     async def RemoveResource(self, stream: Stream[RemoveResourceRequest, RemoveResourceResponse]) -> None:
+        print("here3")
         request = await stream.recv_message()
         assert request is not None
         await self._module.remove_resource(request)

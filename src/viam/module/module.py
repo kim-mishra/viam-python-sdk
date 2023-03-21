@@ -97,6 +97,7 @@ class Module:
             self._ready = ready
 
     async def add_resource(self, request: AddResourceRequest):
+        print("here2")
         dependencies = await self._get_dependencies(request.dependencies)
         config: ComponentConfig = request.config
         subtype = Subtype.from_string(config.api)
@@ -125,6 +126,7 @@ class Module:
             await self.add_resource(add_request)
 
     async def remove_resource(self, request: RemoveResourceRequest):
+        print("here")
         rn = resource_name_from_string(request.name)
         resource = self.server.get_resource(ResourceBase, rn)
         if isinstance(resource, Stoppable):
